@@ -17,8 +17,10 @@ public class Laboratorio4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println(binaryDecimal(101101));
+        // PONER DOS PRUEBAS PARA CADA METODO
+        System.out.println("Binario a decimal" +binaryDecimal(101101));
         int[] vector = {8,4,3,6,1};
+        System.out.print("El inverso es=");
         reversedVector(vector);
        
         
