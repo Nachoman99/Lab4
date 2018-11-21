@@ -18,11 +18,22 @@ public class Laboratorio4 {
     public static void main(String[] args) {
         // TODO code application logic here
         // PONER DOS PRUEBAS PARA CADA METODO
-        System.out.println("Binario a decimal" +binaryDecimal(101101));
+        System.out.println("Binario a decimal= " +binaryDecimal(101101));
+        System.out.println("Binario a decimal= " +binaryDecimal(1001010));
+        
         int[] vector = {8,4,3,6,1};
         System.out.print("El inverso es=");
         reversedVector(vector);
-       
+        
+        int[] vector2 = {1,2,3,4,5};
+        System.out.print("El inverso es=");
+        reversedVector(vector2);
+        
+        System.out.println("Cajero Automatico= " + cashMachine(46725));
+        System.out.println("Cajero Automatico= " + cashMachine(123200));
+        
+        System.out.println("MCD= "+ mcd(228, 184));
+        System.out.println("MCD= "+ mcd(23, 13));
         
     }
     //Problema 1
@@ -79,5 +90,53 @@ public class Laboratorio4 {
     
     //Problema 4
     
+    public static String cashMachine(int amount){
+        int[] vector ={50000,20000,10000,5000,2000,1000,500,100,50,25,10,5};
+        return cashMachine(amount, vector, 0);
+    }
+    
+    private static String cashMachine(int amount, int[] vector, int positions){
+        String result = "";
+        if(amount <1){
+            return result;
+        }else{
+            int sizeMoney = amountMoney(amount,vector[positions]);
+            int updateAmount = remainingAmount(amount, vector[positions]);
+            if(sizeMoney>0){
+               return "\n"+ vector[positions] +":"+ sizeMoney + cashMachine(updateAmount, vector, (positions+1)); 
+            }
+            return cashMachine(updateAmount, vector, (positions+1));
+        }
+    } 
+    
+    private static int amountMoney(int amount, int positionVector){
+        int contador = 0;
+        if(amount<positionVector){
+            return contador;
+        }else{
+            return (contador+1)+ amountMoney(amount-positionVector, positionVector);
+        }   
+    }
+    
+    private static int remainingAmount(int amount, int positionVector){
+        if(amount<positionVector){
+            return amount;
+        }else{
+            return  remainingAmount(amount-positionVector, positionVector);
+        }   
+    }
+    
+    //5
+    public static int mcd(int a, int b){
+        if (a == b) {
+            return a;
+        } else {
+            if (a > b) {
+                return mcd(a - b, b);
+            } else {
+                return mcd(a, b - a);
+            }
+        }
+    }
     
 }
