@@ -7,8 +7,8 @@ package laboratorio4;
 
 
 /**
- *
- * @author usuario
+ *@version 21/11/2018
+ * @author Jose Ignacio Zamora/Kevin Trejos
  */
 public class Laboratorio4 {
 
