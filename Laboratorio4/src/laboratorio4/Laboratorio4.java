@@ -18,6 +18,7 @@ public class Laboratorio4 {
     public static void main(String[] args) {
         // TODO code application logic here
         // PONER DOS PRUEBAS PARA CADA METODO
+        //Comentar y preguntarle al profe
         System.out.println("Binario a decimal= " +binaryDecimal(101101));
         System.out.println("Binario a decimal= " +binaryDecimal(1001010));
         
