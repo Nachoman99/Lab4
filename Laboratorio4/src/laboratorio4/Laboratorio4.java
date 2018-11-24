@@ -33,6 +33,9 @@ public class Laboratorio4 {
         System.out.println("Cajero Automatico= " + cashMachine(46725));
         System.out.println("Cajero Automatico= " + cashMachine(123200));
         
+        System.out.println("Cajero Automatico= " + cashMachine2(46725));
+        System.out.println("Cajero Automatico= " + cashMachine2(123200));
+        
         System.out.println("MCD= "+ mcd(228, 184));
         System.out.println("MCD= "+ mcd(23, 13));
         
@@ -90,6 +93,35 @@ public class Laboratorio4 {
     }
     
     //Problema 4
+    
+    public static String cashMachine2(int amount){
+        int[] vector ={50000,20000,10000,5000,2000,1000,500,100,50,25,10,5};
+        return cashMachine2(amount, vector, 0,0);
+    }
+    
+    private static String cashMachine2(int amount, int[] vector, int positions, int contador){
+        String result = "";
+        if(amount <1){
+            result += "\n"+ vector[positions] +":"+contador; 
+            return result;
+        }else{
+            if(amount >= vector[positions]){
+                amount = amount - vector[positions];
+                contador += 1;   
+            }else{  
+                    if(contador >= 1){
+                      result += "\n"+ vector[positions] +":"+contador; 
+                    }
+                    positions += 1;
+                    return result+ cashMachine2(amount, vector, positions,0);
+                
+                
+            }
+            return  cashMachine2(amount, vector, positions,contador);
+        }
+    } 
+    
+    
     
     public static String cashMachine(int amount){
         int[] vector ={50000,20000,10000,5000,2000,1000,500,100,50,25,10,5};
