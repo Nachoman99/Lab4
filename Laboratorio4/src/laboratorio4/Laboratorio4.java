@@ -19,8 +19,6 @@ public class Laboratorio4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        // PONER DOS PRUEBAS PARA CADA METODO
-        //Comentar y preguntarle al profe
         System.out.println("Binario a decimal= " +binaryDecimal(101101));
         System.out.println("Binario a decimal= " +binaryDecimal(1001010));
         
@@ -68,7 +66,7 @@ public class Laboratorio4 {
     /**
      * Declaration: public static void reservedVector(int[] vector)
      * this method calls the private method
-     * @param vector 
+     * @param vector the vector to invest
      */
     public static void reversedVector(int[] vector){
         reversedVector(vector, 0);
