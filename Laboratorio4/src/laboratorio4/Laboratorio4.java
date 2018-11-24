@@ -7,6 +7,8 @@ package laboratorio4;
 
 
 /**
+ * this class has the tests and the recursive methods
+ * 
  *@version 21/11/2018
  * @author Jose Ignacio Zamora/Kevin Trejos
  */
@@ -33,18 +35,27 @@ public class Laboratorio4 {
         System.out.println("Cajero Automatico= " + cashMachine(46725));
         System.out.println("Cajero Automatico= " + cashMachine(123200));
         
-        System.out.println("Cajero Automatico= " + cashMachine2(46725));
-        System.out.println("Cajero Automatico= " + cashMachine2(123200));
-        
         System.out.println("MCD= "+ mcd(228, 184));
         System.out.println("MCD= "+ mcd(23, 13));
         
     }
-    //Problema 1
+    //1
+    /**
+     * Declaration: public static int binaryDecimal(int binary)
+     * This method calls the private method
+     * @param binary the binary number
+     * @return the decimal number
+     */
     public static int binaryDecimal(int binary){
         return binaryDecimal(binary, 0);
     }
     
+    /**
+     * Declaration: private static int binaryDecimal(int binary, int exponent)
+     * @param binary a binary number
+     * @param exponent the exponent to raise the number
+     * @return the decimal number
+     */
     private static int binaryDecimal(int binary, int exponent){
         int result = 0;
         if (binary < 1) {
@@ -54,12 +65,20 @@ public class Laboratorio4 {
             return result + binaryDecimal(binary / 10, exponent+1);
         }
     }
-    
-    //Problema 2
+    /**
+     * Declaration: public static void reservedVector(int[] vector)
+     * this method calls the private method
+     * @param vector 
+     */
     public static void reversedVector(int[] vector){
         reversedVector(vector, 0);
     }
-    
+    /**
+     * Declaration: private static void reversedVector(int[] vector, int positions)
+     * this method takes a vector and returns the same vector but inverted
+     * @param vector the vector to invest
+     * @param positions counter
+     */
     private static void reversedVector(int[] vector, int positions){
         int mid = 0;
         if (vector.length % 2 == 0) {
@@ -76,13 +95,24 @@ public class Laboratorio4 {
             reversedVector(vector, positions+1);
         }       
     }
-    
-    //Problema 3
-    private static String printVector(int[] vector){
+    /**
+     * Declaration: public static String printVector(int[] vector)
+     * This method call the private method
+     * @param vector vector to print
+     * @return a string with the vector
+     */
+    public static String printVector(int[] vector){
         return printVector(vector, 0);
     }
     
-    public static String printVector(int[] vector, int positions){
+    /**
+     * Declaration: private static String printVector(int[] vector, int positions)
+     * this method prints a vector
+     * @param vector vector to print
+     * @param positions an accountant
+     * @return a string with the vector
+     */
+    private static String printVector(int[] vector, int positions){
         String txt = " ";
         if (vector.length == positions) {
             return "";
@@ -91,74 +121,50 @@ public class Laboratorio4 {
             return txt + printVector(vector, positions +1);
         }
     }
-    
-    //Problema 4
-    
-    public static String cashMachine2(int amount){
+    /**
+     * Declaration: public static String cashMachine(int amount)
+     * this method calls the private vector
+     * @param amount amount to analyze
+     * @return  a string with the minimum amount of money needed
+     */
+    public static String cashMachine(int amount){
         int[] vector ={50000,20000,10000,5000,2000,1000,500,100,50,25,10,5};
-        return cashMachine2(amount, vector, 0,0);
+        return cashMachine(amount, vector, 0,0);
     }
-    
-    private static String cashMachine2(int amount, int[] vector, int positions, int contador){
+    /**
+     * Declaration: private static String cashMachine(int amount, int[vector], int positions, int count)
+     * @param amount amount to analyze 
+     * @param vector a vector with money available
+     * @param positions an accountant
+     * @param count an accountant
+     * @return a string with the minimum amount of money needed
+     */
+    private static String cashMachine(int amount, int[] vector, int positions, int count){
         String result = "";
         if(amount <1){
-            result += "\n"+ vector[positions] +":"+contador; 
+            result += "\n"+ vector[positions] +":"+count; 
             return result;
         }else{
             if(amount >= vector[positions]){
                 amount = amount - vector[positions];
-                contador += 1;   
+                count += 1;   
             }else{  
-                    if(contador >= 1){
-                      result += "\n"+ vector[positions] +":"+contador; 
-                    }
-                    return result+ cashMachine2(amount, vector, positions+1,0);
-                
-                
+                if(count >= 1){
+                    result += "\n"+ vector[positions] +":"+count; 
+                }
+                return result+ cashMachine(amount, vector, positions+1,0);
             }
-            return  cashMachine2(amount, vector, positions,contador);
+            return  cashMachine(amount, vector, positions,count);
         }
     } 
     
-    
-    
-    public static String cashMachine(int amount){
-        int[] vector ={50000,20000,10000,5000,2000,1000,500,100,50,25,10,5};
-        return cashMachine(amount, vector, 0);
-    }
-    
-    private static String cashMachine(int amount, int[] vector, int positions){
-        String result = "";
-        if(amount <1){
-            return result;
-        }else{
-            int sizeMoney = amountMoney(amount,vector[positions]);
-            int updateAmount = remainingAmount(amount, vector[positions]);
-            if(sizeMoney>0){
-               return "\n"+ vector[positions] +":"+ sizeMoney + cashMachine(updateAmount, vector, (positions+1)); 
-            }
-            return cashMachine(updateAmount, vector, (positions+1));
-        }
-    } 
-    
-    private static int amountMoney(int amount, int positionVector){
-        int contador = 0;
-        if(amount<positionVector){
-            return contador;
-        }else{
-            return (contador+1)+ amountMoney(amount-positionVector, positionVector);
-        }   
-    }
-    
-    private static int remainingAmount(int amount, int positionVector){
-        if(amount<positionVector){
-            return amount;
-        }else{
-            return  remainingAmount(amount-positionVector, positionVector);
-        }   
-    }
-    
-    //5
+    /**
+     * Declaration: public static int mcd(int a, int b)
+     * this method gets the maximum common divisor of two numbers
+     * @param a a whole number
+     * @param b a whole number
+     * @return the maximum common divisor of "a" and "b"
+     */
     public static int mcd(int a, int b){
         if (a == b) {
             return a;
@@ -170,5 +176,4 @@ public class Laboratorio4 {
             }
         }
     }
-    
 }
