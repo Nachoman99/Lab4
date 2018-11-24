@@ -112,8 +112,7 @@ public class Laboratorio4 {
                     if(contador >= 1){
                       result += "\n"+ vector[positions] +":"+contador; 
                     }
-                    positions += 1;
-                    return result+ cashMachine2(amount, vector, positions,0);
+                    return result+ cashMachine2(amount, vector, positions+1,0);
                 
                 
             }
